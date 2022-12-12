@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makale Girişi</title>
+    <link rel="icon" href="/static/icons.jpg" type="image/icon type">
+    
+</head>
+<body style="background-color: rgba(26,34,49,255);">
+     
+
+    <h1 style="color: white; padding: 20px; margin-top: 20px; text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Makale Ekle</h1>
+    {% if statusAppend == True %}
+      <p style="color: rgb(126, 255, 126); text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Makale Kayıt edildi <a href="{{url_for('index')}}">Anasayfaya git</a></p>
+
+    {% endif %}
+    <div class="container" style="background-color: rgba(26,34,49,255); ">
+
+        <form action="/makale-ekle" method="POST">
+      
+          <div class="form-group">
+      
+            <div class="form-row">
+      
+              <div class="col">
+      
+                <input type="text" name="title" class="form-control" placeholder="Blog Başlığı" required>
+              </div>
+
+            </div>
+      
+          </div>
+      
+          <div class="form-group">
+      
+            <textarea placeholder="Blog İçeriği" class="form-control" name="content" rows="10" required></textarea>
+      
+          </div>
+      
+          <button type="submit" class="btn btn-lg btn-dark btn-block">Ekle</button>
+      
+        </form>
+      
+      </div>
+      
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    
+</body>
+</html>

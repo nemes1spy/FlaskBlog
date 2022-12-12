@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <section class="forms-section">
+     {% if loginStatus == False %}
+        <p style="color: rgb(238, 111, 111); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Kullancı adı veya şifre hatalı</p>
+
+      {% endif %}
+        {% if status == True %}
+          <p style="color: rgb(72, 165, 72); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Kayıt Başarıyla oluştu.</p>
+      
+        {% endif %}
+        <div class="forms">
+          <div class="form-wrapper is-active">
+            <button type="button" class="switcher switcher-login">
+              Giriş yap
+              <span class="underline"></span>
+            </button>
+            <form class="form form-login" method='POST' action="/login">
+              <fieldset>
+                <legend>Giriş yapmak için kullanıcı adı ve şifrenizi giriniz.</legend>
+                <div class="input-block">
+                  <label for="login-email">Kullanıcı adı</label>
+                  <input id="login-email" type="text" name="usernamelogin">
+                </div>
+                <div class="input-block">
+                  <label for="login-password">Şifre</label>
+                  <input id="login-password" type="password" name="passwordlogin">
+                </div>
+              </fieldset>
+              <button type="submit" class="btn-login">Giriş Yap</button>
+            </form>
+          </div>
+          <div class="form-wrapper">
+            
+            <button type="button" class="switcher switcher-signup">
+              Kayıt ol
+              <span class="underline"></span>
+            </button>
+            <form class="form form-signup" method='POST' action="/register">
+                
+              <fieldset>
+                <legend>Kayıt olmak için kullanıcı adınızı ve şifrenizi girin.</legend>
+                <div class="input-block">
+                  <label for="signup-email">Kullanıcı adınız</label>
+                  <input id="signup-email" type="text" name="username">
+                </div>
+                <div class="input-block">
+                  <label for="signup-password">Şifreniz</label>
+                  <input id="signup-password" type="password" name="password">
+                </div>
+               
+              </fieldset>
+              <button type="submit" class="btn-signup">Kayıt Ol</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    
+</body>
+</html>
+
+
+<script>
+    const switchers = [...document.querySelectorAll('.switcher')]
+
+switchers.forEach(item => {
+	item.addEventListener('click', function() {
+		switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+		this.parentElement.classList.add('is-active')
+	})
+})
+
+</script>

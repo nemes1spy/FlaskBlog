@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/icons.jpg" type="image/icon type">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemesis | Blog</title>
+</head>
+<body>
+    
+<div class="topnav">
+    <a class="active" href="{{url_for('index')}}">Anasayfa</a>
+    {% if 'username' in session %}
+      <a href="{{url_for('makaleEkle')}}">Makale Ekle</a>
+      <a href="{{url_for('logout')}}" style="float: right; "> Çıkış Yap</a>
+      <p style="float: right;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: rgb(202, 210, 235); padding-top:9px; ">{{session['username']}}</p>
+
+    {% else %}
+      <a href="{{url_for('login')}}" style="float: right; "> Giriş Yap</a>
+    {% endif %}
+    
+    
+    
+  </div>
+  <br><br><br>
+  {% for content in total %}
+  
+    <div class="container">
+      <div class="card">
+      
+        <div class="card__body">
+          <h4>{{content[1]}}</h4>
+          <p style=" overflow-wrap: break-word;"> {{(content[2])[0:400]}}</p>
+        </div>
+        <div class="card__footer">  
+        <p>{{content[3]}}</p>
+        
+        </div>
+        <a href="{{ url_for('details', Id=content[0])}}" style="text-decoration: none; color: black; float: right; text-align: end; margin: 20px;">Okumaya Devam et</a>
+        
+      </div>
+    </div>
+
+  {% endfor %}
+    
+</body>
+</html>
